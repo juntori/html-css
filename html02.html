@@ -6,7 +6,11 @@
         <style>
             
             * {
-                box-sizing: border-box;
+                box-sizing: border-box;               /*width를 계산할 때 padding과 border까지 포함해서 계산해라.*/
+            }
+
+            html {
+                scroll-behavior: smooth;
             }
 
             body {
@@ -17,6 +21,7 @@
             section {
                 padding: 40px;
                 margin-bottom: 20px;
+                scroll-margin-top: 80px;
             }
 
             .container {
@@ -79,9 +84,93 @@
                 border-radius: 12px;
             }
 
+            .trust {
+                background-color: #d1e4fa;
+            }
+
+            .trust-list {
+                display: flex;
+                gap: 20px;
+            }
+
+            .trust-card {
+                flex: 1;
+                background-color: white;
+                padding: 24px;
+                border: 1px solid #d0e6f7;
+                border-radius: 12px;
+            }
+
+            .use-cases {
+                background-color: #f7f7f7;
+            }
+
+            .use-case-list {
+                display: flex;
+                gap: 20px;
+            }
+
+            .use-case-card {
+                flex: 1;
+                background-color: white;
+                padding: 24px;
+                border: 1px solid #d0e6f7;
+                border-radius: 12px;
+            }
+
+            .signup {
+                background-color: beige;
+            }
+
+            .signup-form {
+                max-width: 600px;
+                margin: 20px auto 0;         /*위쪽 여백 20px, 좌우 가운데 정렬*/
+            }
+
+            .form-field {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin-bottom: 16px;
+            }
+            
+            .form-field label {
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .form-field input,
+            .form-field select {
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+                border: 1px solid #d0e6f7;
+                border-radius: 12px;
+            }
+
+            .signup-button {
+                display: inline-block;
+                width: 100%;
+                padding: 12px 24px;             /*버튼에 여백 없으면 납작해 보임*/
+                cursor: pointer;             /*클릭 가능한 느낌을 줄때 사용*/
+                background-color: rgb(114, 114, 255);
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                transition: background-color 0.2s ease;
+            }
+
+            .signup-button:hover {
+                background-color: blue;
+            }
 
             @media (max-width: 768px) {
                 .features-list {
+                    flex-direction: column;
+                }
+
+                .trust-list {
                     flex-direction: column;
                 }
 
@@ -96,18 +185,37 @@
                 .start-button {
                     width: 100%;
                 }
+
+                .use-case-list {
+                    flex-direction: column;
+                }
+
+                .header-content {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+
+                .menu {
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    width: 100%;
+                }
             }
 
             .site-header {
                 background-color: white;
                 border-bottom: 1px solid #e5e7eb;
                 padding: 16px 20px;
+                position: sticky;
+                top: 0;
+                z-index: 10;
             }
 
             .header-content {
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
+                align-items: center;     /*flex 부모에서 먹힘*/
             }
 
             .menu {
@@ -140,8 +248,10 @@
                   <nav class="menu">
                     <a href="#target">대상</a>
                     <a href="#problem">문제</a>
+                    <a href="#use-cases">상황</a>
                     <a href="#features">기능</a>
-                    <a href="#hero">시작하기</a>
+                    <a href="#trust">안내</a>
+                    <a href="#signup">시작하기</a>
                  </nav>
             </div>
         </header>
@@ -151,7 +261,7 @@
                 <h1>곁봄 AI</h1>
                 
                 <p>육아를 혼자 감당하지 않도록, AI가 아이 곁에서 함께 지켜봅니다.</p>
-                <a class="start-button" href="#features">곁봄 시작하기</a>
+                <a class="start-button" href="#signup">곁봄 시작하기</a>
                 
             </div>
         </section>
@@ -169,6 +279,28 @@
                 <p>부모가 집안일, 수면, 화장실, 통화 등으로 잠시 시선을 떼는 사이에도 영유아는 화상, 고열, 저체온, 위험 자세, 움직임 이상 같은 위험 상황에 노출될 수 있습니다.</p>
             </div>
         </section>
+
+        <section class="use-cases" id="use-cases">
+            <div class="container">
+                <h2>곁봄 AI가 필요한 순간</h2>
+
+                <div class="use-case-list">
+                    <div class="use-case-card">
+                        <h3>집안일을 하는 순간</h3>
+                        <p>부모가 잠시 시선을 떼도 아이 상태를 확인할 수 있습니다.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <h3>아이가 자는 밤</h3>
+                        <p>보호자가 쉬는 동안에도 수면 중 위험 신호를 확인할 수 있습니다.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <h3>온도 변화가 걱정될 때</h3>
+                        <p>고열, 저체온, 화상 위험 같은 온도 관련 상황을 빠르게 확인할 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <section class="features" id="features">
             <div class="container">
@@ -189,8 +321,51 @@
                         <h3>AI 위험 상황 알림</h3>
                         <p>위험 자세, 움직임 이상, 주변 위험 요소를 보호자에게 알려줍니다.</p>
                     </div>
-            
                 </div>
+            </div>
+        </section>
+
+        <section class="trust" id="trust">
+            <div class="container">
+                <h2>안전한 사용을 위한 안내</h2>
+                <p>곁봄 AI는 부모의 돌봄을 대체하지 않고, 위험 신호를 더 빠르게 확인하도록 돕는 보조 도구입니다.</p>
+                <div class="trust-list">
+                    <div class="trust-card">
+                        <h3>보호자 보조</h3>
+                        <p>곁봄 AI는 부모의 직접적인 돌봄을 대체하지 않고, 위험 신호를 더 빨리 확인하도록 돕습니다.</p>
+                    </div>
+                    <div class="trust-card">
+                        <h3>비의료 목적</h3>
+                        <p>심박 변화나 온도 정보는 의료 진단이 아니라 보호자 알림을 위한 참고 정보입니다.</p>
+                    </div>
+                    <div class="trust-card">
+                        <h3>빠른 알림</h3>
+                        <p>위험 자세, 움직임 이상, 온도 변화 같은 상황을 감지해 보호자가 빠르게 확인할 수 있도록 돕습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="signup" id="signup">
+            <div class="container">
+                <h2>곁봄 AI 사전 신청하기</h2>
+                <p>베타 출시 소식과 서비스 안내를 가장 먼저 받아보세요.</p>
+                <form class="signup-form">
+                    <div class="form-field">
+                        <label for="email">이메일</label>
+                        <input id="email" name="email" type="email" placeholder="이메일을 입력하세요">
+                    </div>
+                    <div class="form-field">
+                        <label for="interest">관심 기능 선택</label>
+                        <select id="interest" name="interest">
+                            <option>열화상 위험 감지</option>
+                            <option>비접촉 생체 신호 감지</option>
+                            <option>AI 위험 상황 알림</option>
+                            <option>전체 기능</option>
+                        </select>
+                    </div>
+                    <button class="signup-button" type="submit">사전 신청하기</button>
+                </form>
             </div>
         </section>
     </body>
