@@ -20,7 +20,6 @@
             }
             section {
                 padding: 40px;
-                margin-bottom: 20px;
                 scroll-margin-top: 80px;
             }
 
@@ -148,6 +147,13 @@
                 border-radius: 12px;
             }
 
+            .form-field input:focus,
+            .form-field select:focus {
+                outline: none;
+                border-color: #5EACD1;
+                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            }
+
             .signup-button {
                 display: inline-block;
                 width: 100%;
@@ -163,6 +169,85 @@
 
             .signup-button:hover {
                 background-color: blue;
+            }
+
+            .site-footer {
+                background-color: #111827;
+                color: beige;
+                padding: 40px 0;
+            }
+
+            .footer-brand {
+                margin-bottom: 10px;
+            }
+
+            .footer-logo {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .footer-menu {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+            .footer-menu a {
+                text-decoration: none;
+                color: #e5e7eb;
+                transition: color 0.2s ease;
+            }
+
+            .footer-menu a:hover {
+                color: #93c5fd;
+            }
+
+            .footer-notice {
+                font-size: small;
+                color: #d1d5db;
+                margin-bottom: 5px;
+            }
+
+            .footer-copy {
+                font-size: x-small;
+                color: #d1d5db;
+            }
+        
+
+            .site-header {
+                background-color: white;
+                border-bottom: 1px solid #e5e7eb;
+                padding: 16px 20px;
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+
+            .header-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;     /*flex 부모에서 먹힘*/
+            }
+
+            .menu {
+                display: flex;
+                gap: 20px;
+            }
+
+            .menu a {
+                text-decoration: none;
+                color: #333;
+                transition: color 0.2s ease;
+            }
+
+            .menu a:hover {
+                color: rgb(149, 149, 219);
+            }
+
+            .logo {
+                font-weight: bold;
+                font-size: 20px;
+                color: black;
             }
 
             @media (max-width: 768px) {
@@ -201,43 +286,13 @@
                     gap: 10px;
                     width: 100%;
                 }
+
+                .footer-menu {
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
             }
 
-            .site-header {
-                background-color: white;
-                border-bottom: 1px solid #e5e7eb;
-                padding: 16px 20px;
-                position: sticky;
-                top: 0;
-                z-index: 10;
-            }
-
-            .header-content {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;     /*flex 부모에서 먹힘*/
-            }
-
-            .menu {
-                display: flex;
-                gap: 20px;
-            }
-
-            .menu a {
-                text-decoration: none;
-                color: #333;
-                transition: color 0.2s ease;
-            }
-
-            .menu a:hover {
-                color: rgb(149, 149, 219);
-            }
-
-            .logo {
-                font-weight: bold;
-                font-size: 20px;
-                color: black;
-            }
         </style>
     </head>
 
@@ -368,5 +423,20 @@
                 </form>
             </div>
         </section>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-brand">
+                    <div class="footer-logo">곁봄 AI</div>
+                    <p>보호자의 돌봄을 돕는 AI 홈캠 서비스</p>
+                </div>
+                <nav class="footer-menu">
+                    <a href="#features">기능</a>
+                    <a href="#trust">안내</a>
+                    <a href="#signup">사전 신청</a>
+                </nav>
+                <p class="footer-notice">의료 진단이 아닌 보호자 알림 보조 서비스입니다.</p>
+                <p class="footer-copy">© 2026 곁봄 AI. All rights reserved.</p>
+            </div>
+        </footer>
     </body>
 </html>
