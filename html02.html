@@ -145,6 +145,20 @@
                 margin: 20px auto 0;         /*위쪽 여백 20px, 좌우 가운데 정렬*/
             }
 
+            .signup-message {
+                margin-top: 20px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .message-error {
+                color: red;
+            }
+
+            .message-success {
+                color: #2563eb;
+            }
+
             .form-field {
                 display: flex;
                 flex-direction: column;
@@ -385,7 +399,7 @@
             <div class="container">
                 <h2>곁봄 AI 사전 신청하기</h2>
                 <p>베타 출시 소식과 서비스 안내를 가장 먼저 받아보세요.</p>
-                <form class="signup-form">
+                <form class="signup-form" novalidate>
                     <div class="form-field">
                         <label for="email">이메일</label>
                         <input id="email" name="email" type="email" placeholder="이메일을 입력하세요">
@@ -401,8 +415,10 @@
                     </div>
                     <button class="signup-button" type="submit">사전 신청하기</button>
                 </form>
+                <p class="signup-message"></p>
             </div>
         </section>
+
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-brand">
@@ -418,5 +434,40 @@
                 <p class="footer-copy">© 2026 곁봄 AI. All rights reserved.</p>
             </div>
         </footer>
+
+        <script>
+            const signupForm = document.querySelector(".signup-form");
+            const emailInput = document.querySelector("#email");
+            const interestSelect = document.querySelector("#interest");
+            const signupMessage = document.querySelector(".signup-message");
+
+            signupForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const emailValue = emailInput.value.trim();
+                const interestValue = interestSelect.value;
+
+                if (emailValue === "" ) {
+                    console.log("이메일을 입력해주세요.");
+                    signupMessage.textContent = "이메일을 입력해주세요.";
+                    signupMessage.classList.remove("message-success");
+                    signupMessage.classList.add("message-error");
+                }
+                else if (!emailValue.includes("@")) {
+                    signupMessage.textContent = "올바른 이메일 형식으로 입력해주세요.";
+                    signupMessage.classList.remove("message-success");
+                    signupMessage.classList.add("message-error");
+                }
+                else {
+                    console.log("사전 신청 완료");
+                    console.log("이메일: ", emailValue);
+                    console.log("관심 기능: ", interestValue);
+                    signupMessage.textContent = `사전 신청이 완료되었습니다. 관심 기능: ${interestValue}`;
+                    signupMessage.classList.remove("message-error");
+                    signupMessage.classList.add("message-success");
+                    signupForm.reset();
+                }
+            });
+        </script>
     </body>
 </html>
